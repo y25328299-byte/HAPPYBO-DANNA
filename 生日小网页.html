@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>老公生日快乐</title>
+
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #79bcf3;
+            color: rgb(227, 192, 196);
+        }
+
+        img {
+            max-width: 95%;
+            max-height: 80vh;
+            object-fit: contain;
+            cursor: pointer;
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: #ffc0cb;
+            color: #333;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <img id="photo" src="生日1.png" onclick="next()">
+
+    <div class="controls">
+        <button onclick="prev()">上一页</button>
+        <span id="page">1 / 4</span>
+        <button onclick="next()">下一页</button>
+    </div>
+
+    <script>
+        const images = [
+            "生日1.png",
+            "生日2.png",
+            "生日3.png",
+            "生日4.png"
+        ];
+
+        let index = 0;
+
+        function show() {
+            document.getElementById("photo").src = images[index];
+            document.getElementById("page").textContent =
+                (index + 1) + " / " + images.length;
+        }
+
+        function next() {
+            index = (index + 1) % images.length;
+            show();
+        }
+
+        function prev() {
+            index = (index - 1 + images.length) % images.length;
+            show();
+        }
+    </script>
+
+</body>
+</html>
